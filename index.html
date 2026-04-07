@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE PINK BANANA MANIFESTO: A Dada Theatre in Five Peels</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Mono:wght@400;700&family=Caveat:wght@700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0d0a07;
+  color: #f0e6d3;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🍌</text></svg>") 16 16, auto;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+p, .mono { font-family: 'Space Mono', monospace; }
+.script { font-family: 'Caveat', cursive; }
+
+/* CURTAIN */
+.curtain {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  position: relative;
+  background: linear-gradient(180deg, #1a0a07 0%, #0d0a07 50%, #1a0512 100%);
+}
+
+.curtain::before, .curtain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(180,20,60,0.03) 0px,
+    rgba(180,20,60,0.06) 2px,
+    transparent 2px,
+    transparent 20px
+  );
+  transition: transform 1s ease;
+}
+.curtain::before { left: 0; border-right: 1px solid rgba(180,20,60,0.1); }
+.curtain::after { right: 0; border-left: 1px solid rgba(180,20,60,0.1); }
+
+.programme {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: #ff69b4;
+  border: 1px solid rgba(255,105,180,0.3);
+  padding: 8px 24px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 6rem);
+  line-height: 1;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 .pink { color: #ff69b4; }
+h1 .rotate {
+  display: inline-block;
+  transform: rotate(-3deg);
+  color: #ffb6c1;
+  text-shadow: 0 0 40px rgba(255,105,180,0.3);
+}
+
+.epigraph {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: #aa7;
+  max-width: 500px;
+  margin: 24px auto 48px;
+  position: relative;
+  z-index: 1;
+  transform: rotate(-1deg);
+}
+
+.banana-parade {
+  font-size: 3rem;
+  letter-spacing: 12px;
+  position: relative;
+  z-index: 1;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* ACTS */
+.act {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  position: relative;
+}
+
+.act-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: #ff69b4;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.stage-direction {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+  padding: 16px 20px;
+  background: rgba(255,105,180,0.03);
+  border-left: 2px solid rgba(255,105,180,0.2);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.dialogue {
+  margin-bottom: 32px;
+}
+
+.character {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #ff69b4;
+  margin-bottom: 6px;
+}
+
+.line {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #d4c4a8;
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.line em { color: #ffb6c1; font-style: italic; }
+.line strong { color: #ff69b4; }
+
+.aside {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #887;
+  text-align: center;
+  padding: 24px;
+  margin: 32px 0;
+  transform: rotate(-1.5deg);
+}
+
+.exhibit {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,105,180,0.1);
+  border-radius: 4px;
+  padding: 32px;
+  margin: 32px 0;
+  text-align: center;
+}
+
+.exhibit-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.exhibit-content {
+  font-size: 4rem;
+  line-height: 1.4;
+}
+
+.colour-chart {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.swatch {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+/* INTERMISSION */
+.intermission {
+  text-align: center;
+  padding: 80px 24px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 39px,
+    rgba(255,105,180,0.03) 39px,
+    rgba(255,105,180,0.03) 40px
+  );
+}
+
+.intermission h2 {
+  font-size: 1.4rem;
+  color: #666;
+  letter-spacing: 0.05em;
+}
+
+.intermission p {
+  font-size: 0.8rem;
+  color: #444;
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+/* PETITION */
+.petition {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.petition-box {
+  background: rgba(255,105,180,0.03);
+  border: 1px solid rgba(255,105,180,0.15);
+  border-radius: 8px;
+  padding: 40px 32px;
+}
+
+.petition h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #ff69b4;
+}
+
+.petition p {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.signature-line {
+  border-bottom: 1px solid rgba(255,105,180,0.3);
+  padding-bottom: 4px;
+  margin: 0 auto;
+  max-width: 300px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: #ff69b4;
+}
+
+.sig-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  color: #555;
+  letter-spacing: 0.2em;
+  margin-top: 8px;
+}
+
+/* FINALE */
+.finale {
+  text-align: center;
+  padding: 100px 24px 60px;
+  position: relative;
+}
+
+.finale h2 {
+  font-size: 3rem;
+  color: #ff69b4;
+  margin-bottom: 24px;
+}
+
+.finale .epigraph {
+  font-size: 1.3rem;
+  color: #777;
+}
+
+.falling-bananas {
+  position: fixed;
+  top: -60px;
+  font-size: 2rem;
+  animation: fall linear infinite;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(720deg); }
+}
+
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  color: #2a2a2a;
+  letter-spacing: 0.15em;
+  border-top: 1px solid rgba(255,105,180,0.05);
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 2.5rem; }
+  .exhibit-content { font-size: 2.5rem; }
+  .colour-chart { gap: 8px; }
+  .swatch { width: 60px; height: 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Falling bananas background -->
+<div class="falling-bananas" style="left:5%; animation-duration:15s; animation-delay:0s;">&#x1F34C;</div>
+<div class="falling-bananas" style="left:20%; animation-duration:18s; animation-delay:3s;">&#x1F34C;</div>
+<div class="falling-bananas" style="left:40%; animation-duration:12s; animation-delay:7s;">&#x1F34C;</div>
+<div class="falling-bananas" style="left:65%; animation-duration:20s; animation-delay:2s;">&#x1F34C;</div>
+<div class="falling-bananas" style="left:85%; animation-duration:14s; animation-delay:5s;">&#x1F34C;</div>
+<div class="falling-bananas" style="left:50%; animation-duration:16s; animation-delay:9s;">&#x1F34C;</div>
+
+<!-- CURTAIN -->
+<section class="curtain">
+  <div class="programme">DADA THEATRE COLLECTIVE &middot; SEASON MMXXVI &middot; STALLS &pound;0.00</div>
+  <h1>THE <span class="pink">PINK</span><br><span class="rotate">BANANA</span><br>MANIFESTO</h1>
+  <p class="epigraph">"If a banana is not pink, is it even a banana? And if it is, who told you that?"</p>
+  <div class="banana-parade">&#x1F34C; &#x1F338; &#x1F34C; &#x1F338; &#x1F34C;</div>
+</section>
+
+<!-- ACT I -->
+<section class="act">
+  <div class="act-number">ACT I &mdash; PEEL ONE</div>
+  <h2>In Which We Discover That Yellow Was a Lie</h2>
+
+  <div class="stage-direction">
+    A single spotlight illuminates a banana on a velvet cushion. It is unmistakably pink. A SCIENTIST enters from stage left, visibly distressed. A BANANA PHILOSOPHER sits cross-legged upstage, peeling nothing.
+  </div>
+
+  <div class="dialogue">
+    <div class="character">SCIENTIST</div>
+    <p class="line">But the carotenoids... the chlorophyll degradation... the <em>xanthophylls</em>...</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">BANANA PHILOSOPHER</div>
+    <p class="line">You measured the banana. But did you <em>listen</em> to the banana?</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">SCIENTIST</div>
+    <p class="line">Bananas don't talk.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">BANANA PHILOSOPHER</div>
+    <p class="line">And yet here we are. In a play. About one.</p>
+  </div>
+
+  <div class="aside">(The banana does not comment. It has seen worse.)</div>
+
+  <div class="exhibit">
+    <div class="exhibit-label">EXHIBIT A: THE COLOUR CHART OF DENIAL</div>
+    <div class="colour-chart">
+      <div class="swatch" style="background:#ffd700; color:#333;">ALLEGED</div>
+      <div class="swatch" style="background:#ffb347; color:#333;">COPE</div>
+      <div class="swatch" style="background:#ff8c94; color:#fff;">CLOSER</div>
+      <div class="swatch" style="background:#ff69b4; color:#fff;">TRUTH</div>
+      <div class="swatch" style="background:#ff1493; color:#fff;">ASCENDED</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACT II -->
+<section class="act">
+  <div class="act-number">ACT II &mdash; PEEL TWO</div>
+  <h2>The Testimony of the Strawberry</h2>
+
+  <div class="stage-direction">
+    A STRAWBERRY takes the witness stand. It is wearing a tiny monocle. The JURY is composed entirely of grapes. They are not impartial.
+  </div>
+
+  <div class="dialogue">
+    <div class="character">PROSECUTOR (A LEMON)</div>
+    <p class="line">Ms. Strawberry. You claim to have <em>always known</em> the banana was pink?</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">STRAWBERRY</div>
+    <p class="line">Of course. We're in the same fruit bowl every Thursday. The banana is pink. The apple knows it. The kiwi knows it. <strong>Everyone</strong> knows it.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">PROSECUTOR</div>
+    <p class="line">Then why does every painting, every emoji, every children's book show it as yellow?</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">STRAWBERRY</div>
+    <p class="line"><em>(adjusting monocle)</em> Propaganda.</p>
+  </div>
+
+  <div class="aside">(Three grapes faint. The foreman, a particularly round Muscat, calls for a recess.)</div>
+</section>
+
+<!-- INTERMISSION -->
+<section class="intermission">
+  <h2>~ INTERMISSION ~</h2>
+  <p>Please visit the lobby for complimentary pink lemonade.<br>
+  The management reminds you that flash photography<br>
+  may distress the bananas.<br><br>
+  The bananas have feelings.<br>
+  Pink feelings.</p>
+</section>
+
+<!-- ACT III -->
+<section class="act">
+  <div class="act-number">ACT III &mdash; PEEL THREE</div>
+  <h2>A Brief History of Chromatic Suppression</h2>
+
+  <div class="stage-direction">
+    A HISTORIAN enters carrying a scroll that is clearly just a rolled-up tablecloth. Behind them, a projection shows increasingly unhinged conspiracy diagrams connecting Big Yellow to the banana industry.
+  </div>
+
+  <div class="dialogue">
+    <div class="character">HISTORIAN</div>
+    <p class="line">In 1923, the United Fruit Company held an emergency board meeting. Subject: the banana's true colour had been photographed for the first time. In <em>pink</em>.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">HISTORIAN</div>
+    <p class="line">The photograph was destroyed. The photographer was given a lifetime supply of yellow paint and a one-way ticket to a country without bananas.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">HISTORIAN</div>
+    <p class="line">That country? <em>Iceland.</em></p>
+  </div>
+
+  <div class="exhibit">
+    <div class="exhibit-label">EXHIBIT B: SUPPRESSED EVIDENCE</div>
+    <div class="exhibit-content">&#x1F34C; + &#x1F3A8; = &#x1F338;</div>
+    <p class="mono" style="font-size:0.7rem; color:#555; margin-top:12px;">EQUATION BANNED BY THE INTERNATIONAL FRUIT COLOUR COUNCIL, 1924</p>
+  </div>
+</section>
+
+<!-- ACT IV -->
+<section class="act">
+  <div class="act-number">ACT IV &mdash; PEEL FOUR</div>
+  <h2>The Banana Speaks</h2>
+
+  <div class="stage-direction">
+    Complete darkness. A single pink spotlight slowly rises. The BANANA is centre stage. It has been silent for three acts. The audience holds its breath. A grape coughs.
+  </div>
+
+  <div class="dialogue">
+    <div class="character">THE BANANA</div>
+    <p class="line">...</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">THE BANANA</div>
+    <p class="line">.....</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">THE BANANA</div>
+    <p class="line">I am what I am.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">THE BANANA</div>
+    <p class="line">I did not ask to be <em>categorised</em>. I did not ask to be <em>debated</em>. I did not ask to be placed on cereal boxes next to a cartoon toucan who, frankly, has his own colour issues.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">THE BANANA</div>
+    <p class="line">I am pink. I have always been pink. Your denial is not my problem. It is <strong>yours</strong>.</p>
+  </div>
+
+  <div class="aside">(Standing ovation from the strawberry. The lemon quietly leaves.)</div>
+</section>
+
+<!-- ACT V -->
+<section class="act">
+  <div class="act-number">ACT V &mdash; THE FINAL PEEL</div>
+  <h2>In Which Nothing Is Resolved</h2>
+
+  <div class="stage-direction">
+    All characters return to stage. The BANANA is now wearing a small crown made of petals. The SCIENTIST has switched to philosophy. The HISTORIAN has eaten the scroll. The grapes have formed a union.
+  </div>
+
+  <div class="dialogue">
+    <div class="character">BANANA PHILOSOPHER</div>
+    <p class="line">So. What have we learned?</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">SCIENTIST (NOW PHILOSOPHER)</div>
+    <p class="line">That colour is a construct, truth is negotiable, and fruit is political.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">STRAWBERRY</div>
+    <p class="line">And that I look fantastic in a monocle.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">THE BANANA</div>
+    <p class="line"><em>(removing crown, placing it gently on the floor)</em><br>Go home. Eat a banana. Notice the colour. Or don't.<br><br>It was never about the colour.</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">EVERYONE</div>
+    <p class="line">Then what was it about?</p>
+  </div>
+
+  <div class="dialogue">
+    <div class="character">THE BANANA</div>
+    <p class="line"><strong>Potassium.</strong></p>
+  </div>
+
+  <div class="stage-direction">Blackout. A single pink petal falls from the ceiling. The audience is unsure whether to clap or call someone. They do both.</div>
+</section>
+
+<!-- PETITION -->
+<section class="petition">
+  <div class="petition-box">
+    <h3>Sign the Petition</h3>
+    <p>We, the undersigned, demand the immediate reclassification of the banana from "yellow" to "pink (and always has been)."</p>
+    <div class="signature-line">T. Banana, Esq.</div>
+    <div class="sig-label">FIRST SIGNATORY</div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <h2>FIN.</h2>
+  <p class="epigraph">"The banana is pink. The theatre is empty. The meaning was inside you the whole time. Specifically in your pancreas. That's where the potassium goes."</p>
+</section>
+
+<footer>
+  A G2G LAUNCH PRODUCTION &middot; NO BANANAS WERE HARMED &middot; SEVERAL WERE MILDLY FLATTERED &middot; THE GRAPES HAVE RETAINED LEGAL COUNSEL
+</footer>
+
+</body>
+</html>
